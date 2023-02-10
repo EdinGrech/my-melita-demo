@@ -1,0 +1,33 @@
+.form-containor{
+    //put login form in center of screen
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //set width of login form
+    width: 50%;
+    //set height of login form
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#melita-logo{
+    //reduce size of logo dynamically while staying alligned
+    width: 70%;
+    height: auto;
+    //set margin to center logo
+    margin: 0 auto;
+    //set margin to center logo
+    display: block;
+}
+
+.login-inputs{
+    padding-top: 1px;
+    //set margin to center logo
+    width: 65%;
+    margin: 0 auto;
+    //set margin to center logo
+    display: block;
+}
