@@ -2,10 +2,29 @@
 <div class="form-containor">
   <img id="melita-logo" src="assets/img/logo.png" alt="logo" />
   <!-- Angulat material username input & password input stack under each other with padding-->
-    <mat-form-field class="login-inputs" style="padding-top: 13px;">
-        <input matInput placeholder="Username" />
-    </mat-form-field>
-    <mat-form-field class="login-inputs">
-        <input matInput placeholder="Password" />
-    </mat-form-field>
+  <mat-form-field class="login-inputs" style="padding-top: 16px">
+    <mat-label>Username</mat-label>
+    <input type="email" matInput placeholder="username" />
+  </mat-form-field>
+  <mat-form-field class="login-inputs">
+    <mat-label>Password</mat-label>
+    <!-- change input type based on hide value -->
+    <input
+      [type]="hide ? 'password' : 'text'"
+      matInput
+      placeholder="password"
+    />
+    <!-- button to make password visable -->
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon style="color: darkgray">{{
+        hide ? "visibility_off" : "visibility"
+      }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="sub-form">
+    <!-- remember me and forgot password link -->
+    <!-- Create a while remember me chreck box with white text using inline style-->
+    <mat-checkbox [color]="'accent'"> <mat-label style="color: white;">Remember me</mat-label></mat-checkbox>
+    <a class="forgot-password" href="#">Forgot password?</a>
+  </div>
 </div>
