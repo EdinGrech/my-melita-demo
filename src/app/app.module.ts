@@ -13,8 +13,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 
+import { UsernameComponent } from './pages/login/input/username/username.component';
+import { PasswordComponent } from './pages/login/input/password/password.component';
+import { RememberMeComponent } from './pages/login/checkBox/remember-me/remember-me.component';
+import { LoginBtnComponent } from './pages/login/button/login-btn/login-btn.component';
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    UsernameComponent,
+    PasswordComponent,
+    RememberMeComponent,
+    LoginBtnComponent,
+  ],
   imports: [
     MatFormFieldModule,
     MatInputModule,

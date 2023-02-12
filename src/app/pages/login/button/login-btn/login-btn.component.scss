@@ -1,0 +1,24 @@
+.center-self {
+  //set button with to fixed size but becomes % if size is to small
+  width: 180px;
+  margin: 0 auto;
+  //set margin to center logo
+  display: block;
+}
+
+.color-style {
+  background-color: transparent;
+  border: white;
+}
+
+.mat-mdc-unelevated-button {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+}
+
+.font-style {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}

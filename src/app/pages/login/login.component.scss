@@ -22,15 +22,6 @@
   display: block;
 }
 
-.login-inputs {
-  padding-top: 1px;
-  //set margin to center logo
-  width: 65%;
-  margin: 0 auto;
-  //set margin to center logo
-  display: block;
-}
-
 .sub-form {
   display: flex;
   flex-direction: row;
@@ -40,14 +31,8 @@
   align-items: center;
 }
 
-.forgot-password{
-    color: white;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-}
-
-.remember-me {
+.forgot-password {
   color: white;
-  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
 }
-
