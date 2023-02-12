@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { LoginBtnComponent } from './pages/login/button/login-btn/login-btn.comp
     LoginBtnComponent,
   ],
   imports: [
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
