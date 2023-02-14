@@ -2,7 +2,7 @@
 <div class="form-containor">
   <img id="melita-logo" src="assets/img/logo.png" alt="logo" />
   <!-- Angular material username input & password input stack under each other with padding-->
-  <app-username class="login-inputs"></app-username>
+  <app-username class="login-inputs" (usernameChange)="updateUsr($event)"></app-username>
   <app-password></app-password>
   <div class="sub-form">
     <!-- remember me and forgot password link -->

@@ -1,4 +1,4 @@
 <mat-form-field class="login-inputs" style="padding-top: 16px">
   <mat-label>Username</mat-label>
-  <input [(ngModel)]="username" type="email" matInput placeholder="username" />
+  <input [(ngModel)]="username" type="email" matInput placeholder="username" (ngModelChange)="onUsernameChange()"/>
 </mat-form-field>

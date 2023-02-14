@@ -7,9 +7,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login-btn.component.scss'],
 })
 export class LoginBtnComponent {
-  @Output() loginBtnPress: EventEmitter<string> = new EventEmitter();
+  @Output() loginBtnPress: EventEmitter<any> = new EventEmitter();
 
   loginBtnPressed() {
-    this.loginBtnPress.emit();
+    this.loginBtnPress.emit(null);
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-username',
   templateUrl: './username.component.html',
@@ -7,12 +7,11 @@ import { Component } from '@angular/core';
 })
 export class UsernameComponent {
   username: string = '';
-
-  //create a getter and setter to be accessable by other components
-  get usernameValue() {
-    return this.username;
-  }
-  set usernameValue(value: string) {
-    this.username = value;
+  //make username value available to parent component
+  @Output() usernameChange = new EventEmitter<string>();
+  constructor() {}
+  //emit username value to parent component
+  onUsernameChange() {
+    this.usernameChange.emit(this.username);
   }
 }

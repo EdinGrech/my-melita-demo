@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PasswordComponent {
   hide: boolean = true;
-  password: string = '';
+  private password: string = '';
   static passwordValue: StringConstructor;
   
   get passwordValue() {
