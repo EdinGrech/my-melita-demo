@@ -4,22 +4,33 @@
   <!-- Username -->
   <mat-form-field class="login-inputs" style="padding-top: 16px">
     <mat-label>Username</mat-label>
+    <!-- error message if variable validEmail is true -->  
     <input
       [(ngModel)]="username"
       type="email"
       matInput
       placeholder="username"
+      required="true"
+      [errorStateMatcher]="matcher"
     />
+    <mat-error class="error-message" *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error class="error-message" *ngIf="emailFormControl.hasError('required')">
+      Email is required
+    </mat-error>
   </mat-form-field>
   <!-- Password -->
   <mat-form-field class="login-inputs">
     <mat-label>Password</mat-label>
+    <mat-error *ngIf="password.length < 6" class="error-message">Password must be at least 6 characters</mat-error>
     <!-- change input type based on hide value -->
     <input
       [(ngModel)]="password"
       [type]="hide ? 'password' : 'text'"
       matInput
       placeholder="password"
+      required="true"
     />
     <!-- button to make password visable -->
     <button mat-icon-button matSuffix (click)="hide = !hide">

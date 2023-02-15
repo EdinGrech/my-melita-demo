@@ -12,6 +12,55 @@
   flex-direction: column;
 }
 
+//media query for mobile
+@media only screen and (max-width: 600px) {
+  .form-containor {
+    //put login form in center of screen
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //set width of login form
+    width: 110%!important;
+    //set height of login form
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sub-form {
+    padding-bottom: 20px;
+    padding-top: 3px;
+    display: flex;
+    flex-direction: column!important;
+    width: 100%!important;
+    margin: 0 auto;
+  }
+  //justify items in sub-form
+  .sub-form > *:first-child {
+    margin-right: 30%!important;
+    padding-bottom: 3px;
+    padding-top: 2px;
+  }
+  .sub-form > *:last-child {
+    margin-left: 30%!important;
+  }
+}
+
+.login-inputs {
+  padding-top: 1px;
+  padding-bottom: 11px;
+  //set margin to center logo
+  width: 65%;
+  margin: 0 auto;
+  //set margin to center logo
+  display: block;
+}
+
+.error-message {
+  padding-top: 5px;
+}
+
 #melita-logo {
   //reduce size of logo dynamically while staying alligned
   width: 70%;

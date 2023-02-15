@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { loginDt } from '../pages/login/loginInterface/loginDt';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Route } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,11 +19,11 @@ export class LoginAuthService {
     //call login api
     this.loginApiCall(payload);
   }
+  
   constructor(private http: HttpClient) {}
 
-  //login api
   baseurl = 'https://selfcare-service.test.melita.com/interview/backend/api/';
-  loginApi = this.baseurl + 'login';
+
   loginApiCall(payload: any) {
     // post request to url with username and password in hearder
     const httpOptions = {
@@ -32,11 +34,11 @@ export class LoginAuthService {
         password: payload.password,
       }),
     };
-    this.http.post(this.loginApi, httpOptions).subscribe(
-      (data) => {
-        console.log(data);
-      }
-    );
+    // this.http.post(this.baseurl + 'login', httpOptions).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //   }
+    // );
   }
 
 }
