@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { LoginAuthService } from '../../services/login-auth.service';
 import { loginDt } from './loginInterface/loginDt';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

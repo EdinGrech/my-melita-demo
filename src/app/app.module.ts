@@ -15,10 +15,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     MatFormFieldModule,

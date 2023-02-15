@@ -6,7 +6,7 @@
     <mat-label>Username</mat-label>
     <!-- error message if variable validEmail is true -->  
     <input
-      [(ngModel)]="username"
+      [formControl]="emailFormControl"
       type="email"
       matInput
       placeholder="username"
@@ -53,4 +53,3 @@
     >
     <mat-label class="font-style">Login</mat-label>
   </button>
-</div>
