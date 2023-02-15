@@ -32,7 +32,7 @@ export class LoginAuthService {
         password: payload.password,
       }),
     };
-    this.http.post(this.loginApi, payload, httpOptions).subscribe(
+    this.http.post(this.loginApi, httpOptions).subscribe(
       (data) => {
         console.log(data);
       }
