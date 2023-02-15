@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,21 +15,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 
-import { UsernameComponent } from './pages/login/input/username/username.component';
-import { PasswordComponent } from './pages/login/input/password/password.component';
-import { RememberMeComponent } from './pages/login/checkBox/remember-me/remember-me.component';
-import { LoginBtnComponent } from './pages/login/button/login-btn/login-btn.component';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    UsernameComponent,
-    PasswordComponent,
-    RememberMeComponent,
-    LoginBtnComponent,
-  ],
+  declarations: [AppComponent, LoginComponent],
   imports: [
+    HttpClientModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
