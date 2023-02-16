@@ -1,7 +1,7 @@
 .form-containor {
   //put login form in center of screen
   position: absolute;
-  top: 40%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   //set width of login form
@@ -17,7 +17,7 @@
   .form-containor {
     //put login form in center of screen
     position: absolute;
-    top: 40%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     //set width of login form
@@ -142,4 +142,8 @@
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 500;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: white;
 }

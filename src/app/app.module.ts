@@ -16,10 +16,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,

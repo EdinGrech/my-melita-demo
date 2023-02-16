@@ -7,6 +7,7 @@
     <!-- error message if variable validEmail is true -->  
     <input
       [formControl]="emailFormControl"
+      [(ngModel)]="username"
       type="email"
       matInput
       placeholder="username"
@@ -49,7 +50,12 @@
     <button
       mat-flat-button
       class="center-self color-style"
+      [disabled]="loading"
       (click)="loginBtnPressed()"
     >
     <mat-label class="font-style">Login</mat-label>
   </button>
+  <br>
+  <!-- loading animation -->
+  <mat-spinner [diameter]="50" *ngIf="loading" class="center-self"></mat-spinner>
+</div>
