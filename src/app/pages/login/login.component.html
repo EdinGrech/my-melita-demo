@@ -11,10 +11,9 @@
       type="email"
       matInput
       placeholder="username"
-      required="true"
       [errorStateMatcher]="matcher"
     />
-    <mat-error class="error-message" *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+    <mat-error class="error-message" *ngIf="emailFormControl.hasError('pattern')">
       Please enter a valid email address
     </mat-error>
     <mat-error class="error-message" *ngIf="emailFormControl.hasError('required')">
@@ -24,14 +23,16 @@
   <!-- Password -->
   <mat-form-field class="login-inputs">
     <mat-label>Password</mat-label>
-    <mat-error *ngIf="password.length < 6" class="error-message">Password must be at least 6 characters</mat-error>
+    <mat-error class="error-message" *ngIf="passwordFormControl.hasError('required')"> Password is required </mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('minlength')" class="error-message">Password must be at least 8 characters</mat-error>
     <!-- change input type based on hide value -->
     <input
       [(ngModel)]="password"
+      [formControl]="passwordFormControl"
       [type]="hide ? 'password' : 'text'"
       matInput
       placeholder="password"
-      required="true"
+      [errorStateMatcher]="matcher"
     />
     <!-- button to make password visable -->
     <button mat-icon-button matSuffix (click)="hide = !hide">
@@ -49,11 +50,11 @@
   </div>
     <button
       mat-flat-button
-      class="center-self color-style"
+      class="center-self color-style login-btn"
       [disabled]="loading"
       (click)="loginBtnPressed()"
     >
-    <mat-label class="font-style">Login</mat-label>
+    <mat-label class="font-style-login-btn">Login</mat-label>
   </button>
   <br>
   <!-- loading animation -->

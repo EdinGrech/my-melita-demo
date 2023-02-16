@@ -4,12 +4,12 @@ import { loginDt } from './loginInterface/loginDt';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 export class emailErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(control?.invalid && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
 @Component({
@@ -28,6 +28,11 @@ export class LoginComponent {
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern(this.pattern),
+  ]);
+
+  passwordFormControl = new FormControl('',[
+    Validators.required,
+    Validators.minLength(8),
   ]);
 
   validEmail: boolean = false;
@@ -57,6 +62,8 @@ export class LoginComponent {
         this.responce = res;
         this.loading = false;
         console.log(this.responce); //debugging ---------
+        //route to home page and provide responce
+        
       },
       (err) => {
         this.responce = err;

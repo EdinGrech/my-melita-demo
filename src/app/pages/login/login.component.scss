@@ -138,10 +138,17 @@
   color: white !important;
 }
 
-.font-style {
+.font-style-login-btn {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.login-btn{
+  //increase size of login button
+  height: 45px;
+  min-width: 200px;
+  width: 28%;
 }
 
 .mat-mdc-progress-spinner {
