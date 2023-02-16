@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
+
+import { AppRoutingModule } from './app-routing.module';
 
 //import angulat materials
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +22,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
   imports: [
+    AppRoutingModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -31,7 +33,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatCheckboxModule,
     MatIconModule,
     BrowserModule,
-    AppRoutingModule,
+
     BrowserAnimationsModule,
   ],
   providers: [],
