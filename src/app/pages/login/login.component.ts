@@ -4,7 +4,7 @@ import { loginDt } from './loginInterface/loginDt';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
-import { Route, Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 export class emailErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -48,6 +48,12 @@ export class LoginComponent {
   constructor(private loginAuthService: LoginAuthService) {}
   
   loginBtnPressed() {
+    if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
+      this.emailFormControl.markAsTouched();
+      this.passwordFormControl.markAsTouched();
+      return;
+    }
+
     this.loading = true;
     const loginData: loginDt = {
       username: this.username,
