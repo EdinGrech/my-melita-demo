@@ -2,14 +2,26 @@ import { Component } from '@angular/core';
 import { LoginAuthService } from '../../services/login-auth.service';
 import { loginDt } from './loginInterface/loginDt';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 
 import { Router, RouterLink } from '@angular/router';
 
 export class emailErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control?.invalid && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(
+      control?.invalid &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }
 @Component({
@@ -18,11 +30,10 @@ export class emailErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   matcher = new emailErrorStateMatcher();
 
   pattern = new RegExp(
-    '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
+    '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
   );
 
   emailFormControl = new FormControl('', [
@@ -30,7 +41,7 @@ export class LoginComponent {
     Validators.pattern(this.pattern),
   ]);
 
-  passwordFormControl = new FormControl('',[
+  passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(8),
   ]);
@@ -46,7 +57,7 @@ export class LoginComponent {
   responce: any;
 
   constructor(private loginAuthService: LoginAuthService) {}
-  
+
   loginBtnPressed() {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       this.emailFormControl.markAsTouched();
@@ -62,14 +73,13 @@ export class LoginComponent {
     };
 
     //subscribe to the login service
-    this.loginAuthService.login(loginData)
+    this.loginAuthService.login(loginData);
     this.loginAuthService.get().subscribe(
       (res) => {
         this.responce = res;
         this.loading = false;
         console.log(this.responce); //debugging ---------
         //route to home page and provide responce
-        
       },
       (err) => {
         this.responce = err;

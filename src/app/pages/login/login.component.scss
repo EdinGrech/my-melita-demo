@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     //set width of login form
-    width: 110%!important;
+    width: 110% !important;
     //set height of login form
     height: auto;
     display: flex;
@@ -32,18 +32,18 @@
     padding-bottom: 20px;
     padding-top: 3px;
     display: flex;
-    flex-direction: column!important;
-    width: 100%!important;
+    flex-direction: column !important;
+    width: 100% !important;
     margin: 0 auto;
   }
   //justify items in sub-form
   .sub-form > *:first-child {
-    margin-right: 30%!important;
+    margin-right: 30% !important;
     padding-bottom: 3px;
     padding-top: 2px;
   }
   .sub-form > *:last-child {
-    margin-left: 30%!important;
+    margin-left: 30% !important;
   }
 }
 
@@ -144,7 +144,7 @@
   font-weight: 400;
 }
 
-.login-btn{
+.login-btn {
   //increase size of login button
   height: 45px;
   min-width: 200px;

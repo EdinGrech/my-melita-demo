@@ -4,7 +4,7 @@
   <!-- Username -->
   <mat-form-field class="login-inputs" style="padding-top: 16px">
     <mat-label>Username</mat-label>
-    <!-- error message if variable validEmail is true -->  
+    <!-- error message if variable validEmail is true -->
     <input
       [formControl]="emailFormControl"
       [(ngModel)]="username"
@@ -13,18 +13,33 @@
       placeholder="username"
       [errorStateMatcher]="matcher"
     />
-    <mat-error class="error-message" *ngIf="emailFormControl.hasError('pattern')">
+    <mat-error
+      class="error-message"
+      *ngIf="emailFormControl.hasError('pattern')"
+    >
       Please enter a valid email address
     </mat-error>
-    <mat-error class="error-message" *ngIf="emailFormControl.hasError('required')">
+    <mat-error
+      class="error-message"
+      *ngIf="emailFormControl.hasError('required')"
+    >
       Email is required
     </mat-error>
   </mat-form-field>
   <!-- Password -->
   <mat-form-field class="login-inputs">
     <mat-label>Password</mat-label>
-    <mat-error class="error-message" *ngIf="passwordFormControl.hasError('required')"> Password is required </mat-error>
-    <mat-error *ngIf="passwordFormControl.hasError('minlength')" class="error-message">Password must be at least 8 characters</mat-error>
+    <mat-error
+      class="error-message"
+      *ngIf="passwordFormControl.hasError('required')"
+    >
+      Password is required
+    </mat-error>
+    <mat-error
+      *ngIf="passwordFormControl.hasError('minlength')"
+      class="error-message"
+      >Password must be at least 8 characters</mat-error
+    >
     <!-- change input type based on hide value -->
     <input
       [(ngModel)]="password"
@@ -44,19 +59,25 @@
   <div class="sub-form">
     <!-- remember me and forgot password link -->
     <mat-checkbox [disableRipple]="true">
-      <mat-label style="color: white" (click)="rememberMe = !rememberMe">Remember me</mat-label></mat-checkbox
+      <mat-label style="color: white" (click)="rememberMe = !rememberMe"
+        >Remember me</mat-label
+      ></mat-checkbox
     >
     <a class="forgot-password" href="#">Forgot password?</a>
   </div>
-    <button
-      mat-flat-button
-      class="center-self color-style login-btn"
-      [disabled]="loading"
-      (click)="loginBtnPressed()"
-    >
+  <button
+    mat-flat-button
+    class="center-self color-style login-btn"
+    [disabled]="loading"
+    (click)="loginBtnPressed()"
+  >
     <mat-label class="font-style-login-btn">Login</mat-label>
   </button>
-  <br>
+  <br />
   <!-- loading animation -->
-  <mat-spinner [diameter]="50" *ngIf="loading" class="center-self"></mat-spinner>
+  <mat-spinner
+    [diameter]="50"
+    *ngIf="loading"
+    class="center-self"
+  ></mat-spinner>
 </div>

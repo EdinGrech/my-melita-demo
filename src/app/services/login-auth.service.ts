@@ -12,7 +12,7 @@ export class LoginAuthService {
 
   //get value of username and password and call login api
   login(loginData: loginDt) {
-    console.log(loginData);//debugging ----------------
+    console.log(loginData); //debugging ----------------
     //payload to send to login api
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -23,7 +23,7 @@ export class LoginAuthService {
       }),
     };
   }
-  
+
   constructor(private http: HttpClient) {}
 
   baseurl = 'https://selfcare-service.test.melita.com/interview/backend/api/';

@@ -1,5 +1,5 @@
 export interface loginDt {
-    username: string;
-    password: string;
-    rememberMe: boolean;
+  username: string;
+  password: string;
+  rememberMe: boolean;
 }

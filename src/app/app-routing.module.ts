@@ -13,11 +13,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule],
 })
-
 export class AppRoutingModule {}
