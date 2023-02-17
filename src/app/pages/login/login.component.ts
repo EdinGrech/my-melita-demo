@@ -56,7 +56,8 @@ export class LoginComponent {
   loading: boolean = false;
   responce: any;
 
-  constructor(private loginAuthService: LoginAuthService) {}
+  constructor(private loginAuthService: LoginAuthService,
+              private router : Router) {}
 
   loginBtnPressed() {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
@@ -80,6 +81,7 @@ export class LoginComponent {
         this.loading = false;
         console.log(this.responce); //debugging ---------
         //route to home page and provide responce
+        this.router.navigate(['/home'], {state: {data: this.responce}});
       },
       (err) => {
         this.responce = err;
