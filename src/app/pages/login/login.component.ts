@@ -8,6 +8,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 import { Router, RouterLink } from '@angular/router';
 
@@ -29,7 +30,9 @@ export class emailErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent {
+
   matcher = new emailErrorStateMatcher();
 
   pattern = new RegExp(
@@ -57,7 +60,9 @@ export class LoginComponent {
   responce: any;
 
   constructor(private loginAuthService: LoginAuthService,
-              private router : Router) {}
+              private router : Router,
+              private cookieJar : CookieService
+              ){}
 
   loginBtnPressed() {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
@@ -80,8 +85,13 @@ export class LoginComponent {
         this.responce = res;
         this.loading = false;
         console.log(this.responce); //debugging ---------
-        //route to home page and provide responce
-        this.router.navigate(['/home'], {state: {data: this.responce}});
+        if (this.rememberMe) {
+          this.cookieJar.set('myMtTkn', this.responce.authToken, 1209600, undefined, undefined, true, 'Strict');
+        }
+        else{
+          this.cookieJar.set('myMtTkn', this.responce.authToken, undefined, undefined, undefined, true, 'Strict');
+        }
+        this.router.navigate(['/home']);
       },
       (err) => {
         this.responce = err;
