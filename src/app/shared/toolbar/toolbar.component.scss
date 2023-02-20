@@ -1,0 +1,26 @@
+// .matero-header {
+//     position: relative;
+//     z-index: 200;
+  
+//     .matero-toolbar {
+//       padding: 0 8px;
+//     }
+//   }
+
+//   .matero-toolbar {
+//     border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
+//   }
+
+.mat-toolbar {
+    background-color: #2196f3;
+    color: white;
+    .mat-icon {
+      margin-right: 8px;
+    }
+    .spacer {
+        flex: 1 1 auto;
+      }
+    .mat-menu-trigger {
+      margin-left: auto;
+    }
+  }

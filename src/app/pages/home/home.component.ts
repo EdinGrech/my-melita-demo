@@ -7,8 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  constructor(private cookieJar: CookieService) {}
 
-  constructor(private cookieJar : CookieService) { }
-
-  test : string = this.cookieJar.get('myMtTkn');
+  test: string = this.cookieJar.get('mymtToken');
 }

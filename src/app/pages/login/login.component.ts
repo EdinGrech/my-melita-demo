@@ -30,9 +30,7 @@ export class emailErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent {
-
   matcher = new emailErrorStateMatcher();
 
   pattern = new RegExp(
@@ -59,10 +57,11 @@ export class LoginComponent {
   loading: boolean = false;
   responce: any;
 
-  constructor(private loginAuthService: LoginAuthService,
-              private router : Router,
-              private cookieJar : CookieService
-              ){}
+  constructor(
+    private loginAuthService: LoginAuthService,
+    private router: Router,
+    private cookieJar: CookieService
+  ) {}
 
   loginBtnPressed() {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
@@ -86,10 +85,25 @@ export class LoginComponent {
         this.loading = false;
         console.log(this.responce); //debugging ---------
         if (this.rememberMe) {
-          this.cookieJar.set('myMtTkn', this.responce.authToken, 1209600, undefined, undefined, true, 'Strict');
-        }
-        else{
-          this.cookieJar.set('myMtTkn', this.responce.authToken, undefined, undefined, undefined, true, 'Strict');
+          this.cookieJar.set(
+            'myMtTkn',
+            this.responce.authToken,
+            1209600,
+            undefined,
+            undefined,
+            true,
+            'Strict'
+          );
+        } else {
+          this.cookieJar.set(
+            'myMtTkn',
+            this.responce.authToken,
+            undefined,
+            undefined,
+            undefined,
+            true,
+            'Strict'
+          );
         }
         this.router.navigate(['/home']);
       },

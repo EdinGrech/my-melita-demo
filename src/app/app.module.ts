@@ -18,10 +18,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, ToolbarComponent, SidebarComponent],
   imports: [
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,

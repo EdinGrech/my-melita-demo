@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     //set width of login form
-    width: 110% !important;
+    width: 100% !important;
     //set height of login form
     height: auto;
     display: flex;
@@ -30,7 +30,7 @@
 
   .sub-form {
     padding-bottom: 20px;
-    padding-top: 3px;
+    //padding-top: 3px;
     display: flex;
     flex-direction: column !important;
     width: 100% !important;
@@ -40,7 +40,7 @@
   .sub-form > *:first-child {
     margin-right: 30% !important;
     padding-bottom: 3px;
-    padding-top: 2px;
+    //padding-top: 2px;
   }
   .sub-form > *:last-child {
     margin-left: 30% !important;
@@ -49,7 +49,7 @@
 
 .login-inputs {
   padding-top: 1px;
-  padding-bottom: 11px;
+  padding-bottom: 7px;
   //set margin to center logo
   width: 65%;
   margin: 0 auto;

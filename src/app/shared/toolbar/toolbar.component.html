@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="openSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <button mat-icon-button (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item>My Profile</button>
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+    <span class="spacer"></span>
+    <button mat-raised-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
+      <span>John Doe</span>
+    </button>
+  </mat-toolbar>
