@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation,
   HostBinding,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 
 import { MatSidenav } from '@angular/material/sidenav';
@@ -16,11 +16,11 @@ import { MatSidenav } from '@angular/material/sidenav';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  
+
   @HostBinding('class') class = 'matero-header';
 
   @Input() showToggle = true;
@@ -35,7 +35,7 @@ export class ToolbarComponent {
   openSidenav() {
     this.sidenav?.open();
   }
-  
+
   refresh() {
     // Your refresh function code goes here
   }
