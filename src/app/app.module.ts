@@ -25,9 +25,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ToolbarComponent, SidebarComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    ToolbarComponent,
+    SidebarComponent,
+  ],
   imports: [
+    MatListModule,
+    MatSelectModule,
     MatToolbarModule,
     MatMenuModule,
     MatSidenavModule,

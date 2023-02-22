@@ -1,20 +1,82 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="openSidenav()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <button mat-icon-button (click)="refresh()">
+<mat-drawer-container
+  class="example-container"
+  [hasBackdrop]="hasBackdrop.value"
+>
+  <mat-drawer #drawer [opened]="true" [mode]="mode.value">
+    <mat-nav-list class="nav-list">
+      <!-- logo -->
+      <img
+        src="../../../assets/img/logo.png"
+        alt=""
+        style="
+          width: 18vw;
+          padding-left: 5px;
+          max-width: 200px;
+          min-width: 130px;
+          padding-top: 7px;
+        "
+      />
+      <a
+        mat-list-item
+        href="https://material.angular.io/components/categories"
+        target="_blank"
+      >
+        <mat-icon matListIcon>link</mat-icon>
+        <h3 matLine>Material</h3>
+        <p matLine>Components</p>
+      </a>
+      <a mat-list-item href="" target="_blank">
+        <mat-icon matListIcon>link</mat-icon>
+        <h3 matLine>Angular</h3>
+        <p matLine>Components</p>
+      </a>
+      <a mat-list-item href="" target="_blank">
+        <mat-icon matListIcon>link</mat-icon>
+        <h3 matLine>Bootstrap</h3>
+        <p matLine>Components</p>
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+      <button mat-icon-button (click)="refresh()">
         <mat-icon>refresh</mat-icon>
       </button>
-    
-    <mat-menu #profileMenu="matMenu">
-      <button mat-menu-item>My Profile</button>
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Logout</button>
-    </mat-menu>
-    <span class="spacer"></span>
-    <button mat-raised-button [matMenuTriggerFor]="profileMenu">
-      <mat-icon>account_circle</mat-icon>
-      <span>John Doe</span>
-    </button>
-  </mat-toolbar>
+      <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item>My Profile</button>
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+      <span class="spacer"></span>
+      <button mat-raised-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>account_circle</mat-icon>
+        <span>John Doe</span>
+      </button>
+    </mat-toolbar>
+
+    <div class="not-side-content">
+      <mat-form-field appearance="fill">
+        <mat-label>Sidenav mode</mat-label>
+        <mat-select #mode value="side">
+          <mat-option value="side">Side</mat-option>
+          <mat-option value="over">Over</mat-option>
+          <mat-option value="push">Push</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Has backdrop</mat-label>
+        <mat-select #hasBackdrop>
+          <mat-option>Unset</mat-option>
+          <mat-option [value]="true">True</mat-option>
+          <mat-option [value]="false">False</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
