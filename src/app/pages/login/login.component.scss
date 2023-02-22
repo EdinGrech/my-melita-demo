@@ -1,7 +1,7 @@
 .form-containor {
   //put login form in center of screen
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   //set width of login form
@@ -10,6 +10,55 @@
   height: auto;
   display: flex;
   flex-direction: column;
+}
+
+//media query for mobile
+@media only screen and (max-width: 600px) {
+  .form-containor {
+    //put login form in center of screen
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //set width of login form
+    width: 100% !important;
+    //set height of login form
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sub-form {
+    padding-bottom: 20px;
+    //padding-top: 3px;
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  //justify items in sub-form
+  .sub-form > *:first-child {
+    margin-right: 30% !important;
+    padding-bottom: 3px;
+    //padding-top: 2px;
+  }
+  .sub-form > *:last-child {
+    margin-left: 30% !important;
+  }
+}
+
+.login-inputs {
+  padding-top: 1px;
+  padding-bottom: 7px;
+  //set margin to center logo
+  width: 65%;
+  margin: 0 auto;
+  //set margin to center logo
+  display: block;
+}
+
+.error-message {
+  padding-top: 5px;
 }
 
 #melita-logo {
@@ -35,4 +84,73 @@
   color: white;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
+}
+
+.remember-me {
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.mat-mdc-checkbox.mat-accent {
+  --mdc-checkbox-disabled-unselected-icon-color: white !important;
+  --mdc-checkbox-unselected-icon-color: white !important;
+  --mdc-checkbox-unselected-focus-icon-color: white !important;
+  --mdc-checkbox-selected-focus-icon-color: white !important;
+  --mdc-checkbox-selected-icon-color: white !important;
+  --mdc-checkbox-selected-pressed-icon-color: white !important;
+  --mdc-checkbox-selected-hover-icon-color: rgb(168, 177, 185) !important;
+  --mdc-checkbox-unselected-hover-icon-color: rgb(168, 177, 185) !important;
+  --mdc-checkbox-selected-checkmark-color: rgb(123, 134, 132) !important;
+}
+
+.mat-mdc-checkbox.mat-accent
+  .mdc-checkbox--selected
+  .mdc-checkbox__ripple::before {
+  background: white !important;
+}
+
+.mat-mdc-checkbox .mdc-checkbox__ripple {
+}
+
+.mat-mdc-checkbox
+  .mdc-checkbox
+  .mdc-checkbox__native-control:not([disabled]):focus
+  ~ .mdc-checkbox__ripple {
+  opacity: 0 !important;
+}
+
+.center-self {
+  //set button with to fixed size but becomes % if size is to small
+  width: 180px;
+  margin: 0 auto;
+  //set margin to center logo
+  display: block;
+}
+
+.color-style {
+  background-color: transparent;
+  border: white;
+}
+
+.mat-mdc-unelevated-button {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white !important;
+}
+
+.font-style-login-btn {
+  font-family: "Roboto", sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.login-btn {
+  //increase size of login button
+  height: 45px;
+  min-width: 200px;
+  width: 28%;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: white;
 }

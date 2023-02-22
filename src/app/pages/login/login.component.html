@@ -1,14 +1,83 @@
 <!-- Add logo png center of page -->
 <div class="form-containor">
   <img id="melita-logo" src="assets/img/logo.png" alt="logo" />
-  <!-- Angular material username input & password input stack under each other with padding-->
-  <app-username class="login-inputs" (usernameChange)="updateUsr($event)"></app-username>
-  <app-password></app-password>
+  <!-- Username -->
+  <mat-form-field class="login-inputs" style="padding-top: 16px">
+    <mat-label>Username</mat-label>
+    <!-- error message if variable validEmail is true -->
+    <input
+      [formControl]="emailFormControl"
+      [(ngModel)]="username"
+      type="email"
+      matInput
+      placeholder="username"
+      [errorStateMatcher]="matcher"
+    />
+    <mat-error
+      class="error-message"
+      *ngIf="emailFormControl.hasError('pattern')"
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error
+      class="error-message"
+      *ngIf="emailFormControl.hasError('required')"
+    >
+      Email is required
+    </mat-error>
+  </mat-form-field>
+  <!-- Password -->
+  <mat-form-field class="login-inputs">
+    <mat-label>Password</mat-label>
+    <mat-error
+      class="error-message"
+      *ngIf="passwordFormControl.hasError('required')"
+    >
+      Password is required
+    </mat-error>
+    <mat-error
+      *ngIf="passwordFormControl.hasError('minlength')"
+      class="error-message"
+      >Password must be at least 8 characters</mat-error
+    >
+    <!-- change input type based on hide value -->
+    <input
+      [(ngModel)]="password"
+      [formControl]="passwordFormControl"
+      [type]="hide ? 'password' : 'text'"
+      matInput
+      placeholder="password"
+      [errorStateMatcher]="matcher"
+    />
+    <!-- button to make password visable -->
+    <button mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon style="color: darkgray">{{
+        hide ? "visibility_off" : "visibility"
+      }}</mat-icon>
+    </button>
+  </mat-form-field>
   <div class="sub-form">
     <!-- remember me and forgot password link -->
-    <!-- Create a while remember me chreck box with white text using inline style-->
-    <app-remember-me></app-remember-me>
+    <mat-checkbox [disableRipple]="true">
+      <mat-label style="color: white" (click)="rememberMe = !rememberMe"
+        >Remember me</mat-label
+      ></mat-checkbox
+    >
     <a class="forgot-password" href="#">Forgot password?</a>
   </div>
-  <app-login-btn (loginBtnPress)="loginToCallServ()" style="padding: 20px"></app-login-btn>
+  <button
+    mat-flat-button
+    class="center-self color-style login-btn"
+    [disabled]="loading"
+    (click)="loginBtnPressed()"
+  >
+    <mat-label class="font-style-login-btn">Login</mat-label>
+  </button>
+  <br />
+  <!-- loading animation -->
+  <mat-spinner
+    [diameter]="50"
+    *ngIf="loading"
+    class="center-self"
+  ></mat-spinner>
 </div>
