@@ -1,15 +1,8 @@
 import {
   Component,
-  Output,
-  EventEmitter,
-  Input,
   ChangeDetectionStrategy,
   ViewEncapsulation,
-  HostBinding,
-  ViewChild,
 } from '@angular/core';
-
-import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,21 +12,16 @@ import { MatSidenav } from '@angular/material/sidenav';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
-  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
+  get isMobile() {
+    return window.innerWidth < 600;
+  }
 
-  @HostBinding('class') class = 'matero-header';
-
-  @Input() showToggle = true;
-  @Input() showBranding = false;
-
-  @Output() toggleSidenav = new EventEmitter<void>();
-  @Output() toggleSidenavNotice = new EventEmitter<void>();
-  @Output() toggleSidenavUser = new EventEmitter<void>();
-
-  constructor() {}
-
-  openSidenav() {
-    this.sidenav?.open();
+  get isMobileDrawerMode() {
+    if (this.isMobile) {
+      return 'over';
+    } else {
+      return 'side';
+    }
   }
 
   refresh() {
