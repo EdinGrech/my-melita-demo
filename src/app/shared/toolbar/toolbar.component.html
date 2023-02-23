@@ -1,14 +1,8 @@
-<mat-drawer-container
-  class="example-container"
->
+<mat-drawer-container class="example-container">
   <mat-drawer #drawer [opened]="!isMobile" [mode]="isMobileDrawerMode">
     <mat-nav-list class="nav-list">
       <!-- logo -->
-      <img
-        src="../../../assets/img/logo.png"
-        alt=""
-        class="logo-side-bar"
-      />
+      <img src="../../../assets/img/logo.png" alt="" class="logo-side-bar" />
       <a
         mat-list-item
         href="https://material.angular.io/components/categories"
@@ -18,7 +12,8 @@
         <h4 matLine class="side-nav-title">Subscriptions</h4>
       </a>
       <a mat-list-item href="" target="_blank" class="hoverme">
-        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+        ><i></i><i></i><i></i>
         <mat-icon matListIcon class="side-nav-icons">shopping_basket</mat-icon>
         <h4 matLine class="side-nav-title">Offers</h4>
       </a>
@@ -96,6 +91,5 @@
     <div class="not-side-content">
       <ng-content></ng-content>
     </div>
-
   </mat-drawer-content>
 </mat-drawer-container>

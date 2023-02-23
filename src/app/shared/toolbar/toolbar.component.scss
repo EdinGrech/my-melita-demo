@@ -16,7 +16,7 @@
 //     flex: 1 1 auto;
 //   }
 // }
-.logo-side-bar{
+.logo-side-bar {
   width: 18vw;
   padding-left: 5px;
   max-width: 200px;
@@ -26,9 +26,9 @@
   border-bottom: 1px solid white;
 }
 
-.mat-mdc-list-base{
+.mat-mdc-list-base {
   height: fill-available;
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
 }
 
@@ -151,7 +151,7 @@
 
 @keyframes bang {
   from {
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
@@ -174,9 +174,10 @@
     @for $i from 1 through 50 {
       i:nth-of-type(#{$i}) {
         z-index: 90000;
-        overflow: visible!important;
-        transform: translate3d(random(50) + 100 + px,random(200) - 100 + px,0) rotate(random(360) + deg);
-        background: hsla(random(360),100%,50%,1);
+        overflow: visible !important;
+        transform: translate3d(random(50) + 100 + px, random(200) - 100 + px, 0)
+          rotate(random(360) + deg);
+        background: hsla(random(360), 100%, 50%, 1);
         animation: bang 700ms ease-out forwards;
         opacity: 0;
       }

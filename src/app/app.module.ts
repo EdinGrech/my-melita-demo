@@ -27,7 +27,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { SkelitonComponent } from './shared/skeliton/skeliton.component';
+
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { OfferCardComponent } from './pages/home/components/offer-card/offer-card.component';
+
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -36,9 +40,11 @@ import { SkelitonComponent } from './shared/skeliton/skeliton.component';
     HomeComponent,
     ToolbarComponent,
     SidebarComponent,
-    SkelitonComponent,
+    OfferCardComponent,
   ],
   imports: [
+    MatCardModule,
+    NgxSkeletonLoaderModule,
     MatListModule,
     MatSelectModule,
     MatToolbarModule,

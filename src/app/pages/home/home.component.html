@@ -1,7 +1,18 @@
 <app-toolbar>
-    <app-skeliton></app-skeliton>
-    <p style="font-size: xx-large;">test?</p>
-    <p>{{ test }}</p>
+  <div style="width: 300px">
+    <div *ngIf="false">
+      <ngx-skeleton-loader
+        count="3"
+        appearance="line"
+        animation="progress-dark"
+        [theme]="{ height: '40px' }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div *ngIf="true">
+      <app-offer-card></app-offer-card>
+    </div>
+  </div>
+  <!-- <p>{{ test }}</p> -->
 </app-toolbar>
 <!-- <app-sidebar></app-sidebar> -->
 <!-- <app-sidebar></app-sidebar> -->
