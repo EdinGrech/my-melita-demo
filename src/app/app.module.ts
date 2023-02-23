@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { SkelitonComponent } from './shared/skeliton/skeliton.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
     HomeComponent,
     ToolbarComponent,
     SidebarComponent,
+    SkelitonComponent,
   ],
   imports: [
     MatListModule,
