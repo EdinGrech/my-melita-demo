@@ -1,6 +1,6 @@
 <app-toolbar>
   <div style="width: 300px">
-    <div *ngIf="false">
+    <div *ngIf="loadingContent">
       <ngx-skeleton-loader
         count="3"
         appearance="line"
@@ -8,8 +8,11 @@
         [theme]="{ height: '40px' }"
       ></ngx-skeleton-loader>
     </div>
-    <div *ngIf="true">
-      <app-offer-card></app-offer-card>
+    <div *ngIf="!loadingContent">
+      <app-offer-card 
+        *ngFor="let offer of offers"
+        [offer]="offer"
+        ></app-offer-card>
     </div>
   </div>
   <!-- <p>{{ test }}</p> -->
