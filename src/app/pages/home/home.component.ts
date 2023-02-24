@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SummeryGetterService } from 'src/app/services/summery-getter.service';
 import { Offer } from './interfaces/offers/offer';
-import { OfferResponse } from 'src/app/services/interface/OfferResponce';
 
 @Component({
   selector: 'app-home',

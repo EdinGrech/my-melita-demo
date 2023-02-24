@@ -32,6 +32,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { OfferCardComponent } from './pages/home/components/offer-card/offer-card.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { SubscriptionComponent } from './pages/subsctiption/subscription.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatCardModule } from '@angular/material/card';
     ToolbarComponent,
     SidebarComponent,
     OfferCardComponent,
+    SubscriptionComponent,
   ],
   imports: [
     MatCardModule,

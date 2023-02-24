@@ -8,8 +8,36 @@
       <h3>Active Subscription</h3>
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
+  <div class="offer-content-container">
+    <div class="offer-content">
+      <mat-card-content>
+        <!-- offer start and end dates -->
+        <div class="offer-dates">
+          <div class="offer-start-date">
+            <h4>Start Date</h4>
+            <p>{{ offer.contractStartDate | date : "dd/MM/yyyy" }}</p>
+          </div>
+          <div class="offer-end-date">
+            <h4>End Date</h4>
+            <p>{{ offer.contractEndDate | date : "dd/MM/yyyy" }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+    <span class="spacer"></span>
+    <img
+      class="offer-svg"
+      src="../../../../../assets/svg/calendar-check-solid-svgrepo-com.svg"
+      alt=""
+    />
+  </div>
   <mat-card-actions>
-    <button mat-button>View</button>
+    <button
+      mat-button
+      class="view-offer-btn"
+      [routerLink]="['/subscription', offer.id]"
+    >
+      View
+    </button>
   </mat-card-actions>
 </mat-card>
