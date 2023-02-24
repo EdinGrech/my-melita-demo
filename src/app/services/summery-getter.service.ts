@@ -3,26 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { Offer } from '../pages/home/interfaces/offers/offer';
+import { OfferResponse } from '../services/interface/OfferResponce';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SummeryGetterService {
-
-  constructor(private http: HttpClient,
-    private cookieJar: CookieService) {}
+  constructor(private http: HttpClient, private cookieJar: CookieService) {}
   baseurl = 'https://selfcare-service.test.melita.com/interview/backend/api/';
   httpOptions: any;
-  
-  offers(): Observable<Offer[]> {
+  // expected reply to be formatted as follows:
+  // {
+  //   "offers": [
+  //     {
+  //       "id": 1,
+  //       "name": "test",
+  //       "contractEndDate": "test",
+  //       "contractStartDate": "test"
+  //     }
+  //   ]
+  //  , "status": 0
+  // }
+  offers(): Observable<OfferResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.cookieJar.get('myMtTkn'),
+        Authorization: 'Bearer ' + this.cookieJar.get('myMtTkn'),
       }),
     };
 
-    return this.http.get<Offer[]>(this.baseurl + 'offers', httpOptions);
+    return this.http.get<OfferResponse>(this.baseurl + 'offers', httpOptions);
   }
-
 }

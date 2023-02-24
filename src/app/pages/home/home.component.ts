@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SummeryGetterService } from 'src/app/services/summery-getter.service';
 import { Offer } from './interfaces/offers/offer';
+import { OfferResponse } from 'src/app/services/interface/OfferResponce';
 
 @Component({
   selector: 'app-home',
@@ -8,23 +9,18 @@ import { Offer } from './interfaces/offers/offer';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  offers : Offer[] = [
-    {
-      id: 1,
-      name: 'test',
-      contractEndDate: 'test',
-      contractStartDate: 'test',
-    }
-  ];
-  loadingContent : boolean = true;
+  offers: Offer[] = [];
+  loadingContent: boolean = true;
   constructor(private summeryGetter: SummeryGetterService) {}
   ngOnInit(): void {
-    this.summeryGetter.offers().subscribe((data:Offer[]) => {
-      console.log(data);
-      //this.offers = ;
-      console.log(data);
+    this.summeryGetter.offers().subscribe((data: any) => {
+      //turn data object into array
+      Object.keys(data.offers).map((key) => {
+        console.log(key);
+        this.offers.push(data.offers[key]);
+      });
       console.log(this.offers);
+      this.loadingContent = false;
     });
-    this.loadingContent = false;
   }
 }

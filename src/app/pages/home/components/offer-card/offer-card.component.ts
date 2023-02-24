@@ -5,6 +5,6 @@ import { Offer } from '../../interfaces/offers/offer';
   templateUrl: './offer-card.component.html',
   styleUrls: ['./offer-card.component.scss'],
 })
-export class OfferCardComponent{
-  @Input() offer: any;//fix later
+export class OfferCardComponent {
+  @Input() offer: any; //fix later
 }

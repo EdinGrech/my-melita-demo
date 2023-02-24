@@ -9,10 +9,10 @@
       ></ngx-skeleton-loader>
     </div>
     <div *ngIf="!loadingContent">
-      <app-offer-card 
+      <app-offer-card
         *ngFor="let offer of offers"
         [offer]="offer"
-        ></app-offer-card>
+      ></app-offer-card>
     </div>
   </div>
   <!-- <p>{{ test }}</p> -->
