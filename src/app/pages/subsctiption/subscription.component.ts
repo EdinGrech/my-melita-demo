@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SummeryGetterService } from 'src/app/services/summery-getter.service';
 import { subscription } from '../subsctiption/interfaces/subscription/subscription';
+import { SubscriptionResponse } from 'src/app/services/interface/SubscriptionResponce';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-subscription',
@@ -18,14 +20,22 @@ export class SubscriptionComponent {
 
   ngOnInit() {
     const offerid = this.route.snapshot.paramMap.get('offerid') || '0'; //if no offerid is provided, default to 0
-    this.summeryGetter.subscribe(+offerid).subscribe((data: any) => {
-      //turn data object into array
-      console.log(data);
-      Object.keys(data.subscriptions).map((key) => {
-        console.log(key);
-        this.subscriptions.push(data.subscriptions[key]);
+    this.summeryGetter
+      .subscribe(+offerid)
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          this.subscriptions = [
+            { id: 0, name: 'No subscriptions found', type: '', line: 0 },
+          ];
+          this.loadingContent = false;
+          return [];
+        })
+      )
+      .subscribe((data: SubscriptionResponse) => {
+        //turn data object into array
+        this.subscriptions = data.subscriptions;
         this.loadingContent = false;
       });
-    });
   }
 }

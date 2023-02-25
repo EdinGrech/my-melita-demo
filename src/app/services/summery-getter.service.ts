@@ -11,7 +11,6 @@ import { SubscriptionResponse } from '../services/interface/SubscriptionResponce
 export class SummeryGetterService {
   constructor(private http: HttpClient, private cookieJar: CookieService) {}
   baseurl = 'https://selfcare-service.test.melita.com/interview/backend/api/';
-  httpOptions: any;
   // expected reply to be formatted as follows:
   // {
   //   "offers": [

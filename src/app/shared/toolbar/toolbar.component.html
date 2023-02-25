@@ -42,7 +42,7 @@
         <mat-icon matListIcon class="side-nav-icons">settings</mat-icon>
         <h4 matLine class="side-nav-title">Settings</h4>
       </a>
-      <a mat-list-item href="" target="_blank">
+      <a mat-list-item (click)="logout()">
         <mat-icon matListIcon class="side-nav-icons">exit_to_app</mat-icon>
         <h4 matLine class="side-nav-title">Logout</h4>
       </a>
@@ -67,7 +67,7 @@
           <mat-icon class="logout-icon">settings</mat-icon>
           <span>Settings</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
           <mat-icon class="logout-icon">exit_to_app</mat-icon>
           <span>Logout</span>
         </button>

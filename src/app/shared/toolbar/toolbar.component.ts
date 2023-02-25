@@ -5,6 +5,10 @@ import {
 } from '@angular/core';
 import { Offer } from 'src/app/pages/home/interfaces/offers/offer';
 import { SummeryGetterService } from 'src/app/services/summery-getter.service';
+import { LogoutService } from 'src/app/services/logout.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -28,7 +32,12 @@ export class ToolbarComponent {
     }
   }
 
-  constructor(private summeryGetter: SummeryGetterService) {}
+  constructor(
+    private summeryGetter: SummeryGetterService,
+    private Logout: LogoutService,
+    private cookieJar: CookieService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.summeryGetter.offers().subscribe((data: any) => {
@@ -43,5 +52,15 @@ export class ToolbarComponent {
 
   refresh() {
     // Your refresh function code goes here
+  }
+
+  logout() {
+    this.Logout.logout().subscribe((data: any) => {
+      if (data.status == 'success') {
+        this.cookieJar.delete('myMtTkn');
+        //route to login page
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

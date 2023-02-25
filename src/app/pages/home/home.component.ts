@@ -14,11 +14,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.summeryGetter.offers().subscribe((data: any) => {
       //turn data object into array
-      Object.keys(data.offers).map((key) => {
-        console.log(key);
-        this.offers.push(data.offers[key]);
-      });
-      console.log(this.offers);
+      this.offers = data.offers;
       this.loadingContent = false;
     });
   }
