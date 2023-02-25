@@ -3,13 +3,29 @@
     <mat-nav-list class="nav-list">
       <!-- logo -->
       <img src="../../../assets/img/logo.png" alt="" class="logo-side-bar" />
-      <a
-        mat-list-item
-        href="https://material.angular.io/components/categories"
-        target="_blank"
-      >
-        <mat-icon matListIcon class="side-nav-icons">device_hub</mat-icon>
-        <h4 matLine class="side-nav-title">Subscriptions</h4>
+      <a style="height: auto; padding-top: 14px">
+        <!-- drop down menu for all subscriptions-->
+        <mat-expansion-panel
+          style="
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: none;
+          "
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header style="padding-left: 14px !important">
+            <mat-panel-title>
+              <mat-icon matListIcon class="side-nav-icons">device_hub</mat-icon>
+              <h4 matLine class="side-nav-title">Subscriptions</h4>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- offer items with router link to do -->
+          <div class="offer-links">
+            <app-offer-link *ngFor="let link of offers" [offer]="link">
+            </app-offer-link>
+          </div>
+        </mat-expansion-panel>
       </a>
       <a mat-list-item href="" target="_blank" class="hoverme">
         <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
@@ -67,26 +83,6 @@
         <span>John Doe</span>
       </button>
     </mat-toolbar>
-
-    <!-- <div class="not-side-content">
-      <mat-form-field appearance="fill">
-        <mat-label>Sidenav mode</mat-label>
-        <mat-select #mode value="side">
-          <mat-option value="side">Side</mat-option>
-          <mat-option value="over">Over</mat-option>
-          <mat-option value="push">Push</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Has backdrop</mat-label>
-        <mat-select #hasBackdrop>
-          <mat-option>Unset</mat-option>
-          <mat-option [value]="true">True</mat-option>
-          <mat-option [value]="false">False</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
-    </div> -->
 
     <div class="not-side-content">
       <ng-content></ng-content>

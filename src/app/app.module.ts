@@ -33,6 +33,9 @@ import { OfferCardComponent } from './pages/home/components/offer-card/offer-car
 
 import { MatCardModule } from '@angular/material/card';
 import { SubscriptionComponent } from './pages/subsctiption/subscription.component';
+import { SubscriptionCardComponent } from './pages/subsctiption/components/subscription-card/subscription-card.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { OfferLinkComponent } from './shared/toolbar/components/offer-link/offer-link.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,11 @@ import { SubscriptionComponent } from './pages/subsctiption/subscription.compone
     SidebarComponent,
     OfferCardComponent,
     SubscriptionComponent,
+    SubscriptionCardComponent,
+    OfferLinkComponent,
   ],
   imports: [
+    MatExpansionModule,
     MatCardModule,
     NgxSkeletonLoaderModule,
     MatListModule,

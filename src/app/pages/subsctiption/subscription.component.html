@@ -1,4 +1,20 @@
 <app-toolbar>
   <!-- title -->
   <h2>Subscriptions</h2>
+  <div style="width: 300px">
+    <div *ngIf="loadingContent">
+      <ngx-skeleton-loader
+        count="3"
+        appearance="line"
+        animation="progress-dark"
+        [theme]="{ height: '40px' }"
+      ></ngx-skeleton-loader>
+    </div>
+    <div *ngIf="!loadingContent">
+      <app-subscription-card
+        *ngFor="let subscription of subscriptions"
+        [subscription]="subscription"
+      ></app-subscription-card>
+    </div>
+  </div>
 </app-toolbar>

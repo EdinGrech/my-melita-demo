@@ -13,6 +13,7 @@ export class SubscriptionComponent {
     private route: ActivatedRoute,
     private summeryGetter: SummeryGetterService
   ) {}
+  loadingContent: boolean = true;
   subscriptions: subscription[] = [];
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class SubscriptionComponent {
       Object.keys(data.subscriptions).map((key) => {
         console.log(key);
         this.subscriptions.push(data.subscriptions[key]);
+        this.loadingContent = false;
       });
     });
   }
