@@ -23,8 +23,7 @@ export class SubscriptionComponent {
     this.summeryGetter
       .subscribe(+offerid)
       .pipe(
-        catchError((error) => {
-          console.log(error);
+        catchError(() => {
           this.subscriptions = [
             { id: 0, name: 'No subscriptions found', type: '', line: 0 },
           ];

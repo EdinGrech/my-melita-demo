@@ -8,4 +8,6 @@ import { Offer } from 'src/app/pages/home/interfaces/offers/offer';
 })
 export class OfferLinkComponent {
   @Input() offer!: Offer;
+
+  validOffer = (offer: Offer) => (offer.id == 0 ? true : false);
 }

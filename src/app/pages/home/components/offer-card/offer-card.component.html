@@ -5,7 +5,7 @@
       <h2>{{ offer.name }}</h2>
     </mat-card-title>
     <mat-card-subtitle>
-      <h3>Active Subscription</h3>
+      <h3 *ngIf="offer.id != 0">Active Subscription</h3>
     </mat-card-subtitle>
   </mat-card-header>
   <div class="offer-content-container">
@@ -26,6 +26,7 @@
     </div>
     <span class="spacer"></span>
     <img
+      *ngIf="offer.id != 0"
       class="offer-svg"
       src="../../../../../assets/svg/calendar-check-solid-svgrepo-com.svg"
       alt=""
@@ -36,6 +37,7 @@
       mat-button
       class="view-offer-btn"
       [routerLink]="['/subscription', offer.id]"
+      [disabled]="!validOffer"
     >
       View
     </button>

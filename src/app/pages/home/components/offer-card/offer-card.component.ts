@@ -7,4 +7,6 @@ import { Offer } from '../../interfaces/offers/offer';
 })
 export class OfferCardComponent {
   @Input() offer!: Offer;
+
+  validOffer = (offer: Offer) => (offer.id == 0 ? true : false);
 }

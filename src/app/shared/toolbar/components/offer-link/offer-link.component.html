@@ -1,6 +1,13 @@
-<p
+<button
   [routerLink]="['/subscription', offer.id]"
   routerLinkActive="routerLinkActive"
+  [disabled]="!validOffer"
 >
+  <!-- arrow icon -->
+  <mat-icon
+    class="arrow-icon"
+    style="font-size: 10px; width: auto; height: auto"
+    >arrow_forward_ios</mat-icon
+  >
   {{ offer.name }}
-</p>
+</button>

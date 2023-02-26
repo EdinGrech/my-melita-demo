@@ -37,6 +37,10 @@ import { SubscriptionCardComponent } from './pages/subsctiption/components/subsc
 import { MatExpansionModule } from '@angular/material/expansion';
 import { OfferLinkComponent } from './shared/toolbar/components/offer-link/offer-link.component';
 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+//import { Subscription } from 'rxjs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +54,7 @@ import { OfferLinkComponent } from './shared/toolbar/components/offer-link/offer
     OfferLinkComponent,
   ],
   imports: [
+    MatProgressBarModule,
     MatExpansionModule,
     MatCardModule,
     NgxSkeletonLoaderModule,
@@ -72,7 +77,10 @@ import { OfferLinkComponent } from './shared/toolbar/components/offer-link/offer
 
     BrowserAnimationsModule,
   ],
-  providers: [CookieService],
+  providers: [
+    //    Subscription,
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
