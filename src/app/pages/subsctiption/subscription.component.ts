@@ -38,9 +38,11 @@ export class SubscriptionComponent {
       });
   }
 
-  refreshSubs() {
+  refreshSubs(id?: number) {
+    console.log(this.subscriptions);
     this.loadingContent = true;
-    const offerid = this.route.snapshot.paramMap.get('offerid') || '0'; //if no offerid is provided, default to 0
+    const offerid = id || this.route.snapshot.paramMap.get('offerid') || '0'; //if no offerid is provided, default to 0
+    console.log(offerid);
     this.summeryGetter
       .subscribe(+offerid)
       .pipe(

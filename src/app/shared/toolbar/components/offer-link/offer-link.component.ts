@@ -11,8 +11,8 @@ export class OfferLinkComponent {
 
   validOffer = (offer: Offer) => (offer.id == 0 ? true : false);
 
-  @Output() offerClicked = new EventEmitter();
+  @Output() offerClicked = new EventEmitter<number>();
   offerClick() {
-    this.offerClicked.emit();
+    this.offerClicked.emit(this.offer.id);
   }
 }

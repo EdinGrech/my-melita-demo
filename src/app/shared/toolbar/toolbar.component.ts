@@ -95,9 +95,9 @@ export class ToolbarComponent {
       });
   }
 
-  @Output() offerClicked = new EventEmitter();
-  drawerOfferLinkClick() {
-    this.offerClicked.emit();
+  @Output() offerClicked = new EventEmitter<number>();
+  drawerOfferLinkClick(id: number) {
+    this.offerClicked.emit(id);
   }
 
   logout() {

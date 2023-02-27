@@ -39,7 +39,7 @@
             <app-offer-link
               *ngFor="let link of offers"
               [offer]="link"
-              (offerClicked)="drawerOfferLinkClick()"
+              (offerClicked)="drawerOfferLinkClick($event)"
             >
             </app-offer-link>
           </div>
