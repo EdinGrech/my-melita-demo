@@ -16,6 +16,20 @@
 //     flex: 1 1 auto;
 //   }
 // }
+.reftesh-btn {
+  //white bg, blue text, blue border, rounded
+  background-color: rgba(255, 255, 255, 0);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  //padding
+  padding: 5px 10px;
+  margin-left: 18px;
+}
+
+.hidden {
+  display: none;
+}
 
 .offer-links {
   margin-top: -10px;

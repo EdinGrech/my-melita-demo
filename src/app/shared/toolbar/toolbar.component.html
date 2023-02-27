@@ -39,7 +39,7 @@
             <app-offer-link
               *ngFor="let link of offers"
               [offer]="link"
-              (click)="refreshPage()"
+              (offerClicked)="drawerOfferLinkClick()"
             >
             </app-offer-link>
           </div>
@@ -69,10 +69,17 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span>My Melita</span>
-      <button mat-icon-button>
+      <!-- Some back magic happened here \/, this element was not responsive to anything i did with view child to investigate further -->
+      <!-- <button
+        mat-icon-button
+        [ngStyle]="{ display: !cointingDown ? 'inline-block' : 'none' }"
+        (click)="startCountdown()"
+      >
         <mat-icon>refresh</mat-icon>
+      </button> -->
+      <button #timer class="reftesh-btn" (click)="startCountdown()">
+        Refresh
       </button>
-      <button #timer (click)="startCountdown()">Refresh</button>
       <mat-menu #profileMenu="matMenu" xPosition="before">
         <button mat-menu-item>
           <mat-icon class="logout-icon">face</mat-icon>

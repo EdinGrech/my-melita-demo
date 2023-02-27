@@ -2,6 +2,7 @@
   [routerLink]="['/subscription', offer.id]"
   routerLinkActive="routerLinkActive"
   [disabled]="!validOffer"
+  (click)="offerClick()"
 >
   <!-- arrow icon -->
   <mat-icon

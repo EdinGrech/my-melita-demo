@@ -37,4 +37,30 @@ export class HomeComponent {
         this.loadingContent = false;
       });
   }
+
+  refreshOffers() {
+    this.loadingContent = true;
+    this.summeryGetter
+      .offers()
+      .pipe(
+        catchError(() => {
+          this.offers = [
+            {
+              id: 0,
+              name: 'No subscriptions found',
+              contractEndDate: '',
+              contractStartDate: '',
+            },
+          ];
+          this.errorDetected = true;
+          this.loadingContent = false;
+          return [];
+        })
+      )
+      .subscribe((data: any) => {
+        //turn data object into array
+        this.offers = data.offers;
+        this.loadingContent = false;
+      });
+  }
 }

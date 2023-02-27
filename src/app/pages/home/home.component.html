@@ -1,4 +1,4 @@
-<app-toolbar>
+<app-toolbar (refresh)="refreshOffers()">
   <div style="width: 300px">
     <div *ngIf="loadingContent">
       <ngx-skeleton-loader

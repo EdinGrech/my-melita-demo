@@ -37,4 +37,25 @@ export class SubscriptionComponent {
         this.loadingContent = false;
       });
   }
+
+  refreshSubs() {
+    this.loadingContent = true;
+    const offerid = this.route.snapshot.paramMap.get('offerid') || '0'; //if no offerid is provided, default to 0
+    this.summeryGetter
+      .subscribe(+offerid)
+      .pipe(
+        catchError(() => {
+          this.subscriptions = [
+            { id: 0, name: 'No subscriptions found', type: '', line: 0 },
+          ];
+          this.loadingContent = false;
+          return [];
+        })
+      )
+      .subscribe((data: SubscriptionResponse) => {
+        //turn data object into array
+        this.subscriptions = data.subscriptions;
+        this.loadingContent = false;
+      });
+  }
 }
