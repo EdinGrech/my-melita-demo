@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { OfferResponse } from '../services/interface/OfferResponce';
 import { SubscriptionResponse } from '../services/interface/SubscriptionResponce';
+import { subscription } from '../pages/subsctiption/interfaces/subscription/subscription';
 @Injectable({
   providedIn: 'root',
 })
@@ -42,9 +43,49 @@ export class SummeryGetterService {
       }),
     };
 
-    return this.http.get<SubscriptionResponse>(
+    let tempRes = this.http.get<SubscriptionResponse>(
       this.baseurl + 'offers/' + offerid + '/subscriptions',
       httpOptions
-    );
+      );
+    //sort subscriptions by name then by line
+    tempRes.subscribe((res) => {
+      res.subscriptions = mergeSortsubs(res.subscriptions);
+      return res;
+      function mergeSortsubs(subs: subscription[]): subscription[] {
+        if (subs.length <= 1) {
+          return subs;
+        }
+      
+        const middle = Math.floor(subs.length / 2);
+        const left = subs.slice(0, middle);
+        const right = subs.slice(middle);
+      
+        return mergesubs(mergeSortsubs(left), mergeSortsubs(right));
+      }
+      
+      function mergesubs(left: subscription[], right: subscription[]): subscription[] {
+        const result = [];
+        let leftIndex = 0;
+        let rightIndex = 0;
+      
+        while (leftIndex < left.length && rightIndex < right.length) {
+          if (left[leftIndex].name < right[rightIndex].name) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+          } else if (left[leftIndex].name > right[rightIndex].name) {
+            result.push(right[rightIndex]);
+            rightIndex++;
+          } else if (left[leftIndex].line < right[rightIndex].line) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+          } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+          }
+        }
+        return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+      }
+    });
+    return tempRes;
   }
 }
