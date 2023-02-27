@@ -3,16 +3,42 @@
   <mat-card-header>
     <mat-card-title class="card-hearer">
       <!-- mat icon -->
-      <mat-icon class="sub-icon">subscriptions</mat-icon>
+      <mat-icon class="sub-icon">{{ subIco }}</mat-icon>
       <h2>{{ subscription.name }}</h2>
     </mat-card-title>
     <mat-card-subtitle>
-      <h3>Active Subscription</h3>
+      <h3 style="font-size: 39; margin: 0 10px !important">
+        {{ subscription.name != "No subscriptions found" ? "Active" : "Error" }}
+      </h3>
     </mat-card-subtitle>
   </mat-card-header>
   <div class="offer-content-container">
     <div class="offer-content">
-      <mat-card-content> </mat-card-content>
+      <mat-card-content>
+        <!-- drop down to view usage-->
+        <mat-expansion-panel
+          *ngIf="showUsage"
+          style="
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: none;
+          "
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header style="padding-left: 0px !important">
+            <mat-panel-title>
+              <mat-icon matListIcon class="side-nav-icons">device_hub</mat-icon>
+              <h4 matLine class="side-nav-title">Usage</h4>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <!-- offer items with router link to do -->
+          <app-sub-usage
+            *ngFor="let usage of usages"
+            [usege]="usage"
+          ></app-sub-usage>
+        </mat-expansion-panel>
+      </mat-card-content>
     </div>
     <span class="spacer"></span>
   </div>

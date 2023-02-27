@@ -1,3 +1,26 @@
+mat-panel-title {
+  //align items center
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.side-nav-icons {
+  padding-right: 7px;
+  color: #2196f3;
+}
+
+.side-nav-title {
+  font-size: large;
+  font-weight: 400;
+  color: #2196f3;
+  margin: 0px !important;
+}
+
+.sub-icon {
+  margin-right: 17px !important;
+}
+
 .card-hearer {
   display: flex;
   flex-direction: row;
