@@ -16,6 +16,10 @@
 //     flex: 1 1 auto;
 //   }
 // }
+.mat-expansion-panel-body ng-tns-c99-1 {
+  padding-right: 0 !important;
+}
+
 .reftesh-btn {
   //white bg, blue text, blue border, rounded
   background-color: rgba(255, 255, 255, 0);
@@ -76,6 +80,7 @@
   font-weight: 400;
   color: white;
   margin-bottom: 10px !important;
+  margin-top: 12px !important;
 }
 
 .mdc-list-item__primary-text {

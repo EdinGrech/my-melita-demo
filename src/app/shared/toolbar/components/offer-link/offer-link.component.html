@@ -3,6 +3,12 @@
   routerLinkActive="routerLinkActive"
   [disabled]="!validOffer"
   (click)="offerClick()"
+  style="
+    max-width: 160px !important;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  "
 >
   <!-- arrow icon -->
   <mat-icon
@@ -10,5 +16,7 @@
     style="font-size: 10px; width: auto; height: auto"
     >arrow_forward_ios</mat-icon
   >
-  {{ offer.name }}
+  <span>
+    {{ offer.name }}
+  </span>
 </button>
