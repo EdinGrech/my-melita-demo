@@ -12,7 +12,6 @@ export class LoginAuthService {
 
   //get value of username and password and call login api
   login(loginData: loginDt) {
-    console.log(loginData); //debugging ----------------
     //payload to send to login api
     this.httpOptions = {
       headers: new HttpHeaders({

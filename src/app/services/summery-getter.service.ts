@@ -38,7 +38,6 @@ export class SummeryGetterService {
       .pipe(
         map((res) => {
           res.offers = quicksort(res.offers);
-          console.log(res.offers);
           return res;
           function quicksort(offers: Offer[]): Offer[] {
             if (offers.length <= 1) {

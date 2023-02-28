@@ -83,7 +83,6 @@ export class LoginComponent {
       (res) => {
         this.responce = res;
         this.loading = false;
-        console.log(this.responce); //debugging ---------
         if (this.rememberMe) {
           this.cookieJar.set(
             'myMtTkn',
@@ -110,7 +109,6 @@ export class LoginComponent {
       (err) => {
         this.responce = err;
         this.loading = false;
-        console.log(this.responce); //debugging ----------
       }
     );
   }

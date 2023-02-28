@@ -99,8 +99,9 @@ export class ToolbarComponent {
   drawerOfferLinkClick(id: number) {
     this.offerClicked.emit(id);
   }
-
+  loggingout: boolean = false;
   logout() {
+    this.loggingout = true;
     this.Logout.logout().subscribe((data: any) => {
       if (data.status == 'success') {
         this.cookieJar.delete('myMtTkn');

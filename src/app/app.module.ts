@@ -39,6 +39,7 @@ import { OfferLinkComponent } from './shared/toolbar/components/offer-link/offer
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubUsageComponent } from './pages/subsctiption/components/sub-usage/sub-usage.component';
+import { LogoutOverlayComponent } from './shared/toolbar/components/logout-overlay/logout-overlay.component';
 
 //import { Subscription } from 'rxjs';
 
@@ -54,6 +55,7 @@ import { SubUsageComponent } from './pages/subsctiption/components/sub-usage/sub
     SubscriptionCardComponent,
     OfferLinkComponent,
     SubUsageComponent,
+    LogoutOverlayComponent,
   ],
   imports: [
     MatProgressBarModule,
