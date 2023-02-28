@@ -7,10 +7,9 @@
 }
 
 .offer-svg {
-  color: #2196f3;
-  width: 150px;
+  width: 200px;
   height: auto;
-  margin-top: -70px;
+  margin-top: -110px;
 }
 
 .offer-content-container {
@@ -35,6 +34,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
+  max-width: 355px;
   text-align: center;
   &:hover {
     background-color: #2196f3;
@@ -85,5 +85,11 @@
 @media screen and (max-width: 600px) {
   .offer-card {
     width: 95vw !important;
+  }
+
+  .offer-svg {
+    width: 150px;
+    height: auto;
+    margin-top: -70px !important;
   }
 }
