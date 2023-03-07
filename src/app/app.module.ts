@@ -41,6 +41,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubUsageComponent } from './pages/subsctiption/components/sub-usage/sub-usage.component';
 import { LogoutOverlayComponent } from './shared/toolbar/components/logout-overlay/logout-overlay.component';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
+
 //import { Subscription } from 'rxjs';
 
 @NgModule({
@@ -78,8 +83,16 @@ import { LogoutOverlayComponent } from './shared/toolbar/components/logout-overl
     MatCheckboxModule,
     MatIconModule,
     BrowserModule,
-
     BrowserAnimationsModule,
+
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal,
+    }),
   ],
   providers: [
     //    Subscription,
