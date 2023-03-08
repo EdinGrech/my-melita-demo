@@ -8,13 +8,12 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Offer } from 'src/app/pages/home/interfaces/offers/offer';
-import { OffersState } from 'src/app/state/offers/offers.reducer';
 import { LogoutService } from 'src/app/services/logout.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { interval, take, map } from 'rxjs';
+import { interval, take, map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectOffersList } from 'src/app/state/offers/offers.selectors';
+import { selectOffersList, selectOffersLoading, selectOffersError } from 'src/app/state/offers/offers.selectors';
 import { loadOffers } from 'src/app/state/offers/offers.actions';
 
 @Component({
@@ -46,16 +45,12 @@ export class ToolbarComponent {
     private store: Store
   ) {}
 
-  public allOffers$ = this.store.select(selectOffersList);
+  public allOffers$:Observable<Offer[]> = this.store.select(selectOffersList);
+  public loadingOffers$:Observable<boolean> = this.store.select(selectOffersLoading);
+  public errorOffers$:Observable<any> = this.store.select(selectOffersError);
 
-  offers: Offer[] = [];
-  loadingOffers: boolean = true;
   ngOnInit(): void {
     this.store.dispatch(loadOffers());
-    this.store.select(selectOffersList).subscribe((offersFromState:Offer[]) => {
-      this.offers = offersFromState;
-      this.loadingOffers = false;
-    });
     {
       // this.summeryGetter
       //   .offers()

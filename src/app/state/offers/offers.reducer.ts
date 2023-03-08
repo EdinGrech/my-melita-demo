@@ -16,10 +16,6 @@ export const initialState: OffersState = {
 export const offersReducer = createReducer(
     initialState,
     on(loadOffers, (state) => ({ ...state, loading: true })),
-    on(loadOffersSuccess, (state, { offers }) => ({ ...state, offers, loading: false })),
-    on(loadOffersFailure, (state, { error }) => ({ ...state, error, loading: false }))
+    on(loadOffersSuccess, (state, { offers }) => ({ ...state, offers:offers, error:null, loading: false })),
+    on(loadOffersFailure, (state, { error }) => ({ ...state, error:error, loading: false }))
 );
-
-export const getOffers = (state: OffersState) => state.offers;
-export const getOffersLoading = (state: OffersState) => state.loading;
-export const getOffersError = (state: OffersState) => state.error;

@@ -32,13 +32,13 @@
           </mat-expansion-panel-header>
           <!-- offer items with router link to do -->
           <mat-progress-bar
-            *ngIf="loadingOffers"
+            *ngIf="(loadingOffers$ | async)"
             mode="indeterminate"
             [color]="'accent'"
           ></mat-progress-bar>
           <div class="offer-links">
             <app-offer-link
-              *ngFor="let link of offers"
+              *ngFor="let link of allOffers$ | async"
               [offer]="link"
               (offerClicked)="drawerOfferLinkClick($event)"
             >
