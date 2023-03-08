@@ -46,6 +46,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 
+import { offersReducer } from './state/offers/offers.reducer';
+import { OffersEffects } from './state/offers/offers.effects';
+
 //import { Subscription } from 'rxjs';
 
 @NgModule({
@@ -85,8 +88,8 @@ import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
     BrowserModule,
     BrowserAnimationsModule,
 
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({offers: offersReducer}),
+    EffectsModule.forRoot([OffersEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),

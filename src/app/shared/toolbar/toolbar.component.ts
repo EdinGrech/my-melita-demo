@@ -8,11 +8,14 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Offer } from 'src/app/pages/home/interfaces/offers/offer';
-import { SummeryGetterService } from 'src/app/services/summery-getter.service';
+import { OffersState } from 'src/app/state/offers/offers.reducer';
 import { LogoutService } from 'src/app/services/logout.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { catchError, interval, take, map } from 'rxjs';
+import { Router } from '@angular/router';
+import { interval, take, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectOffersList } from 'src/app/state/offers/offers.selectors';
+import { loadOffers } from 'src/app/state/offers/offers.actions';
 
 @Component({
   selector: 'app-toolbar',
@@ -37,41 +40,49 @@ export class ToolbarComponent {
   }
 
   constructor(
-    private summeryGetter: SummeryGetterService,
     private Logout: LogoutService,
     private cookieJar: CookieService,
     private router: Router,
-    private route: ActivatedRoute
+    private store: Store
   ) {}
+
+  public allOffers$ = this.store.select(selectOffersList);
 
   offers: Offer[] = [];
   loadingOffers: boolean = true;
   ngOnInit(): void {
-    this.summeryGetter
-      .offers()
-      .pipe(
-        catchError(() => {
-          this.offers = [
-            {
-              id: 0,
-              name: 'No subscriptions found',
-              contractStartDate: '',
-              contractEndDate: '',
-            },
-          ];
-          this.loadingOffers = false;
-          return [];
-        })
-      )
-      .subscribe((data: any) => {
-        //turn data object into array
-        Object.keys(data.offers).map((key) => {
-          console.log(key);
-          this.offers.push(data.offers[key]);
-        });
-        console.log(this.offers);
-        this.loadingOffers = false;
-      });
+    this.store.dispatch(loadOffers());
+    this.store.select(selectOffersList).subscribe((offersFromState:Offer[]) => {
+      this.offers = offersFromState;
+      this.loadingOffers = false;
+    });
+    {
+      // this.summeryGetter
+      //   .offers()
+      //   .pipe(
+        //     catchError(() => {
+          //       this.offers = [
+            //         {
+              //           id: 0,
+              //           name: 'No subscriptions found',
+              //           contractStartDate: '',
+              //           contractEndDate: '',
+              //         },
+              //       ];
+              //       this.loadingOffers = false;
+              //       return [];
+              //     })
+              //   )
+              //   .subscribe((data: any) => {
+                //     //turn data object into array
+      //     Object.keys(data.offers).map((key) => {
+      //       console.log(key);
+      //       this.offers.push(data.offers[key]);
+      //     });
+      //     console.log(this.offers);
+      //     this.loadingOffers = false;
+      //   });
+    }
   }
 
   @ViewChild('timer', { static: true }) timer!: ElementRef;
