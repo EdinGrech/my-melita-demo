@@ -3,7 +3,7 @@
     Offers
   </h2>
   <div style="width: 300px">
-    <div *ngIf="loadingContent">
+    <div *ngIf="loadingOffers$ | async">
       <ngx-skeleton-loader
         count="3"
         appearance="line"
@@ -11,9 +11,9 @@
         [theme]="{ height: '40px' }"
       ></ngx-skeleton-loader>
     </div>
-    <div *ngIf="!loadingContent">
+    <div *ngIf="!(loadingOffers$ | async)">
       <app-offer-card
-        *ngFor="let offer of offers"
+        *ngFor="let offer of allOffers$ | async"
         [offer]="offer"
       ></app-offer-card>
     </div>

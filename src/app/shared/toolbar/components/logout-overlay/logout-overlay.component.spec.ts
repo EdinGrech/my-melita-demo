@@ -8,9 +8,8 @@ describe('LogoutOverlayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoutOverlayComponent ]
-    })
-    .compileComponents();
+      declarations: [LogoutOverlayComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LogoutOverlayComponent);
     component = fixture.componentInstance;

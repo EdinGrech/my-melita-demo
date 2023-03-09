@@ -32,7 +32,7 @@
           </mat-expansion-panel-header>
           <!-- offer items with router link to do -->
           <mat-progress-bar
-            *ngIf="(loadingOffers$ | async)"
+            *ngIf="loadingOffers$ | async"
             mode="indeterminate"
             [color]="'accent'"
           ></mat-progress-bar>

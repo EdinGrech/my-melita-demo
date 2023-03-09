@@ -13,7 +13,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { interval, take, map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectOffersList, selectOffersLoading, selectOffersError } from 'src/app/state/offers/offers.selectors';
+import {
+  selectOffersList,
+  selectOffersLoading,
+  selectOffersError,
+} from 'src/app/state/offers/offers.selectors';
 import { loadOffers } from 'src/app/state/offers/offers.actions';
 
 @Component({
@@ -45,9 +49,10 @@ export class ToolbarComponent {
     private store: Store
   ) {}
 
-  public allOffers$:Observable<Offer[]> = this.store.select(selectOffersList);
-  public loadingOffers$:Observable<boolean> = this.store.select(selectOffersLoading);
-  public errorOffers$:Observable<any> = this.store.select(selectOffersError);
+  public allOffers$: Observable<Offer[]> = this.store.select(selectOffersList);
+  public loadingOffers$: Observable<boolean> =
+    this.store.select(selectOffersLoading);
+  public errorOffers$: Observable<any> = this.store.select(selectOffersError);
 
   ngOnInit(): void {
     this.store.dispatch(loadOffers());
@@ -55,21 +60,21 @@ export class ToolbarComponent {
       // this.summeryGetter
       //   .offers()
       //   .pipe(
-        //     catchError(() => {
-          //       this.offers = [
-            //         {
-              //           id: 0,
-              //           name: 'No subscriptions found',
-              //           contractStartDate: '',
-              //           contractEndDate: '',
-              //         },
-              //       ];
-              //       this.loadingOffers = false;
-              //       return [];
-              //     })
-              //   )
-              //   .subscribe((data: any) => {
-                //     //turn data object into array
+      //     catchError(() => {
+      //       this.offers = [
+      //         {
+      //           id: 0,
+      //           name: 'No subscriptions found',
+      //           contractStartDate: '',
+      //           contractEndDate: '',
+      //         },
+      //       ];
+      //       this.loadingOffers = false;
+      //       return [];
+      //     })
+      //   )
+      //   .subscribe((data: any) => {
+      //     //turn data object into array
       //     Object.keys(data.offers).map((key) => {
       //       console.log(key);
       //       this.offers.push(data.offers[key]);

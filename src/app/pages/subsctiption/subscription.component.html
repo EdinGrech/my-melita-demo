@@ -3,7 +3,7 @@
     Subscriptions
   </h2>
   <div style="width: 300px">
-    <div *ngIf="loadingContent">
+    <div *ngIf="loadingSubscriptions$ | async">
       <ngx-skeleton-loader
         count="3"
         appearance="line"
@@ -11,9 +11,9 @@
         [theme]="{ height: '40px' }"
       ></ngx-skeleton-loader>
     </div>
-    <div *ngIf="!loadingContent">
+    <div *ngIf="!(loadingSubscriptions$ | async)">
       <app-subscription-card
-        *ngFor="let subscription of subscriptions"
+        *ngFor="let subscription of subscriptions$ | async"
         [subscription]="subscription"
       ></app-subscription-card>
     </div>

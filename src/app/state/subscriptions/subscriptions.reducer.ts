@@ -1,31 +1,47 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadSubscription, loadSubscriptionSuccess, loadSubscriptionFailure } from './subscriptions.actions';
-import { SunscriptionOfferGroup } from './subOfferGroup-interface';
+import {
+  loadSubscription,
+  loadSubscriptionSuccess,
+  loadSubscriptionFailure,
+} from './subscriptions.actions';
+import { subscription } from '../../pages/subsctiption/interfaces/subscription/subscription';
 
 export interface SunscriptionOfferGroupState {
-    SunscriptionOfferGroups: SunscriptionOfferGroup[];
-    status: 'pending' | 'success' | 'failure';
-    error?: any;
+  id: number;
+  Subscriptions: subscription[];
+  status: 'pending' | 'success' | 'failure';
+  loading: boolean;
+  error?: any;
 }
 
 export const initialState: SunscriptionOfferGroupState = {
-    SunscriptionOfferGroups: [],
-    status: 'pending',
+  id: 0,
+  Subscriptions: [],
+  error: null,
+  loading: false,
+  status: 'pending',
 };
 
 export const subscriptionsReducer = createReducer(
-    initialState,
-    on(loadSubscription, (state) => ({ ...state, status: 'pending' })),
-    on(loadSubscriptionSuccess, (state, { id, subscriptions }) => {
-        const newSunscriptionOfferGroup: SunscriptionOfferGroup = {
-            id,
-            subscriptions,
-        };
-        return {
-            ...state,
-            SunscriptionOfferGroups: [...state.SunscriptionOfferGroups, newSunscriptionOfferGroup],
-            status: 'success',
-        };
-    }),
-    on(loadSubscriptionFailure, (state, { error }) => ({ ...state, status: 'failure', error })),
+  initialState,
+  on(loadSubscription, (state) => ({
+    ...state,
+    loading: true,
+    status: 'pending',
+  })),
+  on(loadSubscriptionSuccess, (state, { id, subscriptions }) => {
+    return {
+      ...state,
+      id: id,
+      Subscriptions: subscriptions,
+      loading: false,
+      status: 'success',
+    };
+  }),
+  on(loadSubscriptionFailure, (state, { error }) => ({
+    ...state,
+    status: 'failure',
+    loading: false,
+    error,
+  }))
 );

@@ -1,10 +1,22 @@
 import { createSelector } from '@ngrx/store';
+import { AppState } from '../app.state';
 import { SunscriptionOfferGroupState } from './subscriptions.reducer';
-import { SunscriptionOfferGroup } from './subOfferGroup-interface';
+import { subscription } from '../../pages/subsctiption/interfaces/subscription/subscription';
 
-export const selectSubscriptions = (state: SunscriptionOfferGroupState) => state.SunscriptionOfferGroups;
+export const selectSubscriptions = (state: AppState) => state.subscriptions;
 
-export const selectSubscriptionsById = (id: number) => createSelector(
-    selectSubscriptions,
-    (subscriptions: SunscriptionOfferGroup[]) => subscriptions.find((subscription: SunscriptionOfferGroup) => subscription.id === id)
+export const selectSubscriptionsList = createSelector(
+  selectSubscriptions,
+  (subscriptions: SunscriptionOfferGroupState) => subscriptions.Subscriptions
+);
+
+export const selectSubscriptionsOnlyList: any = createSelector(
+  selectSubscriptionsList,
+  (subscriptions: subscription[]) =>
+    subscriptions.map((subscription) => subscription)
+);
+
+export const selectSubscriptionsLoading: any = createSelector(
+  selectSubscriptions,
+  (state: SunscriptionOfferGroupState) => state.loading
 );
