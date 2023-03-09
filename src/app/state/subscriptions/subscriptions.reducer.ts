@@ -41,6 +41,9 @@ export const subscriptionsReducer = createReducer(
   on(loadSubscriptionFailure, (state, { error }) => ({
     ...state,
     status: 'failure',
+    Subscriptions: [
+      { id: 0, name: 'No subscriptions found', type: '', line: 0 },
+    ],
     loading: false,
     error,
   }))
